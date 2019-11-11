@@ -90,7 +90,7 @@ userRouter.patch('/users/me', auth, async (req, res) => {
 
 userRouter.delete('/users/me', auth, async (req, res) =>{
     try {
-        req.user.remove()
+        await req.user.remove()
         sendCancellationEmail(req.user.email, req.user.name)
         res.send(req.user)
     } catch (err) {
